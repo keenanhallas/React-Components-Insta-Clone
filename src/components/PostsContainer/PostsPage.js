@@ -6,21 +6,15 @@ import "./Posts.css";
 // import data
 import dummyData from "../../dummy-data";
 
-// dummyData.map(() => {
-//   console.log("test");
-// });
-
 const PostsPage = () => {
   // set up state for your data
   const [postData, setPostData] = useState(dummyData);
-  console.log(postData);
 
   return (
     <div className="posts-container-wrapper">
       {/* map through data here to return a Post and pass data as props to Post */
-        postData.map((post) => {
-          //console.log(post);
-          return <Post post={post}/>
+        postData.map((post, i) => {
+          return <Post post={post} key={i}/> //was getting an error before without unique keys - Warning: Each child in a list should have a unique "key" prop.
         })
       }
     </div>
@@ -28,8 +22,3 @@ const PostsPage = () => {
 };
 
 export default PostsPage;
-
-// postData.map(() => {
-//   console.log("Test")
-//   //return <Post post={post}/>;
-// });})
